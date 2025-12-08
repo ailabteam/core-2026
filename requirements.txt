@@ -1,0 +1,19 @@
+# Core Deep Learning Framework
+# PaddlePaddle GPU version (Latest version often supports CUDA 12.x)
+# If installation fails, specify a version like paddlepaddle-gpu==2.6.0.post120
+paddlepaddle-gpu
+
+# PaddleOCR Toolkit
+paddleocr
+
+# Image processing and handling dependencies
+opencv-python
+Pillow
+scikit-image # Useful for image pre-processing (deskewing, cleaning)
+scipy # Dependency for some scikit-image functions
+
+# Optional: Libraries for Post-Correction/Layout Analysis (Future steps)
+# We will use the transformer library from Hugging Face for the ViT5/LayoutLM steps
+transformers
+sentencepiece # Required for T5/ViT5 tokenizers
+accelerate # Helps in efficient GPU memory usage for large models

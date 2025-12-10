@@ -1,19 +1,18 @@
-# Core Deep Learning Framework
-# PaddlePaddle GPU version (Latest version often supports CUDA 12.x)
-# If installation fails, specify a version like paddlepaddle-gpu==2.6.0.post120
-paddlepaddle-gpu
+# Core dependencies for OCR pipeline (Gemini)
+google-generativeai>=0.7.2
+python-dotenv>=1.0.1
+pydantic>=2.7.0
+pydantic-settings>=2.2.1
+tqdm>=4.66.0
+requests>=2.31.0
 
-# PaddleOCR Toolkit
-paddleocr
+# Image/PDF handling
+opencv-python>=4.9.0.80
+Pillow>=10.3.0
+pdf2image>=1.17.0
+scikit-image>=0.23.2
+scipy>=1.12.0
 
-# Image processing and handling dependencies
-opencv-python
-Pillow
-scikit-image # Useful for image pre-processing (deskewing, cleaning)
-scipy # Dependency for some scikit-image functions
-
-# Optional: Libraries for Post-Correction/Layout Analysis (Future steps)
-# We will use the transformer library from Hugging Face for the ViT5/LayoutLM steps
-transformers
-sentencepiece # Required for T5/ViT5 tokenizers
-accelerate # Helps in efficient GPU memory usage for large models
+# Optional: lightweight API/CLI enhancements
+typer>=0.12.3
+rich>=13.7.1

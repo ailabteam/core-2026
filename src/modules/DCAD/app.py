@@ -10,27 +10,64 @@ Bao gồm 5 bước chính:
 5. Chuẩn hoá cho OCR / AI
 """
 
-import cv2
+import sys
+import os
+
+# Diagnostic info when running directly
+if __name__ == "__main__":
+    print(f"Python executable: {sys.executable}", file=sys.stderr)
+    print(f"Python version: {sys.version}", file=sys.stderr)
+    print(f"Python path: {sys.path[:3]}", file=sys.stderr)
+
+try:
+    import cv2
+except ImportError as e:
+    print(f"\n❌ Error importing cv2: {e}", file=sys.stderr)
+    print(f"Python executable: {sys.executable}", file=sys.stderr)
+    print(f"\n💡 Solution: Install opencv-python:", file=sys.stderr)
+    print(f"   {sys.executable} -m pip install opencv-python", file=sys.stderr)
+    sys.exit(1)
 import numpy as np
 import time
 from typing import Tuple, Optional, Union, Dict, Any
 import os
+import sys
 
-from .config import *
-from .utils import (
-    load_image,
-    load_pdf_page,
-    resize_with_aspect_ratio,
-    compute_skew_angle,
-    find_document_contour,
-    order_points,
-    apply_clahe,
-    calculate_image_quality_score,
-    apply_unsharp_mask,
-    ensure_grayscale,
-    rotate_image,
-    perspective_transform
-)
+# Handle both module import and direct execution
+try:
+    from .config import *
+    from .utils import (
+        load_image,
+        load_pdf_page,
+        resize_with_aspect_ratio,
+        compute_skew_angle,
+        find_document_contour,
+        order_points,
+        apply_clahe,
+        calculate_image_quality_score,
+        apply_unsharp_mask,
+        ensure_grayscale,
+        rotate_image,
+        perspective_transform
+    )
+except ImportError:
+    # When running directly, use absolute imports
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    from modules.DCAD.config import *
+    from modules.DCAD.utils import (
+        load_image,
+        load_pdf_page,
+        resize_with_aspect_ratio,
+        compute_skew_angle,
+        find_document_contour,
+        order_points,
+        apply_clahe,
+        calculate_image_quality_score,
+        apply_unsharp_mask,
+        ensure_grayscale,
+        rotate_image,
+        perspective_transform
+    )
 
 
 class DocumentEnhancer:
@@ -53,28 +90,28 @@ class DocumentEnhancer:
         self,
         target_dpi: int = TARGET_DPI,
         grayscale: bool = DEFAULT_GRAYSCALE,
+        mode: str = DEFAULT_MODE,
         enable_deskew: bool = True,
-        enable_crop: bool = True,
-        enable_enhance: bool = True,
-        enable_ocr_prep: bool = True
+        enable_crop: bool = False,
+        enable_enhance: bool = True
     ):
         """
         Initialize DocumentEnhancer
         
         Args:
             target_dpi: Target DPI for processing (default: 300)
-            grayscale: Convert to grayscale (default: True)
+            grayscale: Convert to grayscale (default: False - keep color for AI)
+            mode: Processing mode - 'ai' for modern AI models or 'ocr' for classical OCR (default: 'ai')
             enable_deskew: Enable skew correction (default: True)
-            enable_crop: Enable document cropping (default: True)
+            enable_crop: Enable document cropping (default: False - keep full image for AI)
             enable_enhance: Enable enhancement filters (default: True)
-            enable_ocr_prep: Enable OCR preparation (default: True)
         """
         self.target_dpi = target_dpi
         self.grayscale = grayscale
+        self.mode = mode
         self.enable_deskew = enable_deskew
         self.enable_crop = enable_crop
         self.enable_enhance = enable_enhance
-        self.enable_ocr_prep = enable_ocr_prep
         
     def process(
         self,
@@ -152,10 +189,15 @@ class DocumentEnhancer:
             metadata['enhancement_params'] = enhance_params
             metadata['processing_steps'].append('enhance')
         
-        # Stage 5: Prepare for OCR
-        if self.enable_ocr_prep:
+        # Stage 5: Final preparation (mode-specific)
+        if self.mode == MODE_OCR:
+            # Only apply binary threshold for classical OCR
             image = self.prepare_for_ocr(image)
             metadata['processing_steps'].append('ocr_prep')
+        else:
+            # For AI mode: just light final enhancement
+            image = self.prepare_for_ai(image)
+            metadata['processing_steps'].append('ai_prep')
         
         # Calculate final quality metrics
         metadata['quality_metrics'] = calculate_image_quality_score(image)
@@ -253,11 +295,10 @@ class DocumentEnhancer:
         """
         Stage 4: Apply filters and CLAHE for enhancement
         
-        Applies multiple filters to reduce noise and enhance quality:
-        - Bilateral filter (edge-preserving noise reduction)
-        - Median filter (salt-and-pepper noise)
-        - CLAHE (contrast enhancement)
-        - Unsharp masking (sharpening)
+        AI-friendly enhancement (gentle, natural):
+        - Light bilateral filter (preserve texture)
+        - CLAHE for local contrast (moderate)
+        - Very light sharpening (optional)
         
         Args:
             image: Input image
@@ -267,47 +308,105 @@ class DocumentEnhancer:
         """
         enhanced = image.copy()
         params = {}
+        is_color = len(enhanced.shape) == 3
         
-        # Ensure grayscale
-        if len(enhanced.shape) == 3:
-            enhanced = cv2.cvtColor(enhanced, cv2.COLOR_BGR2GRAY)
+        if self.mode == MODE_AI:
+            # AI-friendly enhancement: keep natural, don't oversharpen
+            
+            if is_color:
+                # Process color image in LAB space for better results
+                lab = cv2.cvtColor(enhanced, cv2.COLOR_BGR2LAB)
+                l, a, b = cv2.split(lab)
+                
+                # Light bilateral filter on L channel only
+                l = cv2.bilateralFilter(l, d=BILATERAL_D, 
+                                       sigmaColor=BILATERAL_SIGMA_COLOR, 
+                                       sigmaSpace=BILATERAL_SIGMA_SPACE)
+                params['bilateral_d'] = BILATERAL_D
+                
+                # CLAHE on L channel for local contrast
+                l = apply_clahe(l, clip_limit=CLAHE_CLIP_LIMIT, 
+                               tile_grid_size=CLAHE_TILE_GRID_SIZE)
+                params['clahe_clip'] = CLAHE_CLIP_LIMIT
+                
+                # Merge back
+                lab = cv2.merge([l, a, b])
+                enhanced = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
+            else:
+                # Grayscale processing
+                enhanced = cv2.bilateralFilter(enhanced, d=BILATERAL_D,
+                                              sigmaColor=BILATERAL_SIGMA_COLOR,
+                                              sigmaSpace=BILATERAL_SIGMA_SPACE)
+                enhanced = apply_clahe(enhanced, clip_limit=CLAHE_CLIP_LIMIT,
+                                      tile_grid_size=CLAHE_TILE_GRID_SIZE)
+            
+            # Very light sharpening (optional, subtle)
+            if hasattr(sys.modules[__name__], 'SHARPEN_AMOUNT'):
+                enhanced = apply_unsharp_mask(
+                    enhanced,
+                    kernel_size=SHARPEN_KERNEL_SIZE,
+                    sigma=SHARPEN_SIGMA,
+                    amount=SHARPEN_AMOUNT
+                )
+                params['sharpen_amount'] = SHARPEN_AMOUNT
         
-        # Step 1: Bilateral filter (edge-preserving denoising)
-        enhanced = cv2.bilateralFilter(
-            enhanced,
-            d=BILATERAL_D,
-            sigmaColor=BILATERAL_SIGMA_COLOR,
-            sigmaSpace=BILATERAL_SIGMA_SPACE
-        )
-        params['bilateral_d'] = BILATERAL_D
-        
-        # Step 2: Median filter (remove salt-and-pepper noise)
-        enhanced = cv2.medianBlur(enhanced, MEDIAN_KERNEL_SIZE)
-        params['median_kernel'] = MEDIAN_KERNEL_SIZE
-        
-        # Step 3: CLAHE (contrast enhancement)
-        enhanced = apply_clahe(
-            enhanced,
-            clip_limit=CLAHE_CLIP_LIMIT,
-            tile_grid_size=CLAHE_TILE_GRID_SIZE
-        )
-        params['clahe_clip'] = CLAHE_CLIP_LIMIT
-        params['clahe_grid'] = CLAHE_TILE_GRID_SIZE
-        
-        # Step 4: Unsharp masking (sharpening)
-        enhanced = apply_unsharp_mask(
-            enhanced,
-            kernel_size=(5, 5),
-            sigma=1.0,
-            amount=0.5
-        )
-        params['unsharp_amount'] = 0.5
+        else:
+            # OCR mode: stronger processing for binary output
+            if is_color:
+                enhanced = cv2.cvtColor(enhanced, cv2.COLOR_BGR2GRAY)
+            
+            enhanced = cv2.bilateralFilter(enhanced, d=9, sigmaColor=75, sigmaSpace=75)
+            enhanced = cv2.medianBlur(enhanced, MEDIAN_KERNEL_SIZE)
+            enhanced = apply_clahe(enhanced, clip_limit=2.0, tile_grid_size=(8, 8))
+            enhanced = apply_unsharp_mask(enhanced, kernel_size=(5, 5), 
+                                         sigma=1.0, amount=0.5)
+            params['mode'] = 'ocr_strong'
         
         return enhanced, params
     
+    def prepare_for_ai(self, image: np.ndarray) -> np.ndarray:
+        """
+        Stage 5A: Light final preparation for AI models (DeepSeek, Gemini, etc.)
+        
+        Keep image natural and readable for humans:
+        - NO binary thresholding
+        - NO morphological operations
+        - Just ensure good brightness balance
+        
+        Args:
+            image: Input image
+            
+        Returns:
+            AI-ready natural image (color or grayscale)
+        """
+        # AI models work best with natural images
+        # Just ensure the image isn't too dark or too bright
+        result = image.copy()
+        
+        if len(result.shape) == 3:
+            # Color image: light brightness adjustment if needed
+            hsv = cv2.cvtColor(result, cv2.COLOR_BGR2HSV)
+            h, s, v = cv2.split(hsv)
+            
+            # Check if image is too dark
+            mean_brightness = v.mean()
+            if mean_brightness < 100:
+                # Gently brighten
+                v = cv2.add(v, int(100 - mean_brightness) // 2)
+            
+            hsv = cv2.merge([h, s, v])
+            result = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
+        else:
+            # Grayscale: light brightness adjustment
+            mean_brightness = result.mean()
+            if mean_brightness < 100:
+                result = cv2.add(result, int(100 - mean_brightness) // 2)
+        
+        return result
+    
     def prepare_for_ocr(self, image: np.ndarray) -> np.ndarray:
         """
-        Stage 5: Adaptive threshold and morphology for OCR
+        Stage 5B: Binary preparation for classical OCR (legacy mode)
         
         Prepares image for optimal OCR performance:
         - Adaptive thresholding (handles varying lighting)
@@ -383,16 +482,17 @@ class DocumentEnhancer:
         return {
             'target_dpi': self.target_dpi,
             'grayscale': self.grayscale,
+            'mode': self.mode,
             'enable_deskew': self.enable_deskew,
             'enable_crop': self.enable_crop,
-            'enable_enhance': self.enable_enhance,
-            'enable_ocr_prep': self.enable_ocr_prep
+            'enable_enhance': self.enable_enhance
         }
 
 
 def quick_enhance(
     input_source: Union[str, np.ndarray],
-    grayscale: bool = True
+    mode: str = MODE_AI,
+    grayscale: bool = False
 ) -> Tuple[np.ndarray, Dict[str, Any]]:
     """
     Quick enhancement with default settings
@@ -401,12 +501,13 @@ def quick_enhance(
     
     Args:
         input_source: Path to image/PDF or numpy array
-        grayscale: Convert to grayscale
+        mode: 'ai' for modern AI models or 'ocr' for classical OCR (default: 'ai')
+        grayscale: Convert to grayscale (default: False - keep color for AI)
         
     Returns:
         Tuple of (enhanced_image, metadata)
     """
-    enhancer = DocumentEnhancer(grayscale=grayscale)
+    enhancer = DocumentEnhancer(mode=mode, grayscale=grayscale)
     return enhancer.process(input_source)
 
 

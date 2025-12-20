@@ -1,0 +1,998 @@
+{
+  "pages": [
+    {
+      "page": 0,
+      "width": 1200,
+      "height": 1600,
+      "blocks": [
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            85,
+            342,
+            100
+          ],
+          "lines": [
+            {
+              "text": "UBND THÀNH PHỐ ĐÀ NẴNG",
+              "bbox": [
+                88,
+                85,
+                342,
+                100
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.053125,
+                0.285,
+                0.0625
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.053125,
+            0.285,
+            0.0625
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            671,
+            85,
+            915,
+            100
+          ],
+          "lines": [
+            {
+              "text": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+              "bbox": [
+                671,
+                85,
+                915,
+                100
+              ],
+              "bbox_norm": [
+                0.5591666666666667,
+                0.053125,
+                0.7625,
+                0.0625
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.5591666666666667,
+            0.053125,
+            0.7625,
+            0.0625
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            109,
+            342,
+            124
+          ],
+          "lines": [
+            {
+              "text": "SỞ GIÁO DỤC VÀ ĐÀO TẠO",
+              "bbox": [
+                88,
+                109,
+                342,
+                124
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.068125,
+                0.285,
+                0.0775
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.068125,
+            0.285,
+            0.0775
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            732,
+            109,
+            853,
+            124
+          ],
+          "lines": [
+            {
+              "text": "Độc lập - Tự do - Hạnh phúc",
+              "bbox": [
+                732,
+                109,
+                853,
+                124
+              ],
+              "bbox_norm": [
+                0.61,
+                0.068125,
+                0.7108333333333333,
+                0.0775
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.61,
+            0.068125,
+            0.7108333333333333,
+            0.0775
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            142,
+            331,
+            157
+          ],
+          "lines": [
+            {
+              "text": "Số: 1906 /SGDĐT-CTTTT",
+              "bbox": [
+                88,
+                142,
+                331,
+                157
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.08875,
+                0.2758333333333333,
+                0.098125
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.08875,
+            0.2758333333333333,
+            0.098125
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            687,
+            142,
+            898,
+            157
+          ],
+          "lines": [
+            {
+              "text": "Đà Nẵng, ngày 26 tháng 7 năm 2020",
+              "bbox": [
+                687,
+                142,
+                898,
+                157
+              ],
+              "bbox_norm": [
+                0.5725,
+                0.08875,
+                0.7483333333333333,
+                0.098125
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.5725,
+            0.08875,
+            0.7483333333333333,
+            0.098125
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            166,
+            403,
+            181
+          ],
+          "lines": [
+            {
+              "text": "V/v khẩn trương thực hiện các biện",
+              "bbox": [
+                88,
+                166,
+                403,
+                181
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.10375,
+                0.3358333333333333,
+                0.113125
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.10375,
+            0.3358333333333333,
+            0.113125
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            190,
+            396,
+            205
+          ],
+          "lines": [
+            {
+              "text": "pháp phòng, chống dịch COVID-19",
+              "bbox": [
+                88,
+                190,
+                396,
+                205
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.11875,
+                0.33,
+                0.128125
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.11875,
+            0.33,
+            0.128125
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            240,
+            163,
+            255
+          ],
+          "lines": [
+            {
+              "text": "Kính gửi:",
+              "bbox": [
+                88,
+                240,
+                163,
+                255
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.15,
+                0.13583333333333333,
+                0.159375
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.15,
+            0.13583333333333333,
+            0.159375
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            108,
+            254,
+            584,
+            309
+          ],
+          "lines": [
+            {
+              "text": "- Phòng giáo dục và đào tạo các quận, huyện;",
+              "bbox": [
+                108,
+                294,
+                584,
+                309
+              ],
+              "bbox_norm": [
+                0.09,
+                0.18375,
+                0.4866666666666667,
+                0.193125
+              ]
+            },
+            {
+              "text": "- Các trường, trung tâm trực thuộc Sở;",
+              "bbox": [
+                108,
+                274,
+                497,
+                289
+              ],
+              "bbox_norm": [
+                0.09,
+                0.17125,
+                0.4141666666666667,
+                0.180625
+              ]
+            },
+            {
+              "text": "- Các trường đại học ngoài công lập.",
+              "bbox": [
+                108,
+                254,
+                485,
+                269
+              ],
+              "bbox_norm": [
+                0.09,
+                0.15875,
+                0.4041666666666667,
+                0.168125
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.09,
+            0.15875,
+            0.4866666666666667,
+            0.193125
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            300,
+            915,
+            376
+          ],
+          "lines": [
+            {
+              "text": "Thực hiện chỉ đạo của UBND thành phố tại Công văn số 4869/UBND-",
+              "bbox": [
+                88,
+                360,
+                915,
+                376
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.225,
+                0.7625,
+                0.235
+              ]
+            },
+            {
+              "text": "SYT ngày 26/7/2020 về việc khẩn trương triển khai các biện pháp phòng, chống",
+              "bbox": [
+                88,
+                340,
+                915,
+                356
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.2125,
+                0.7625,
+                0.2225
+              ]
+            },
+            {
+              "text": "dịch COVID-19, Sở Giáo dục và Đào tạo yêu cầu thủ trưởng các đơn vị, trường",
+              "bbox": [
+                88,
+                320,
+                915,
+                336
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.2,
+                0.7625,
+                0.21
+              ]
+            },
+            {
+              "text": "học khẩn trương thực hiện những nội dung sau:",
+              "bbox": [
+                88,
+                300,
+                706,
+                316
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.1875,
+                0.5883333333333334,
+                0.1975
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.1875,
+            0.7625,
+            0.235
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            399,
+            584,
+            417
+          ],
+          "lines": [
+            {
+              "text": "1. Thời gian học sinh, học viên, sinh viên nghỉ học",
+              "bbox": [
+                88,
+                399,
+                584,
+                417
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.249375,
+                0.4866666666666667,
+                0.260625
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.249375,
+            0.4866666666666667,
+            0.260625
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            417,
+            915,
+            491
+          ],
+          "lines": [
+            {
+              "text": "a) Học sinh, học viên các cơ sở giáo dục mầm non, các trung tâm ngoại",
+              "bbox": [
+                88,
+                477,
+                915,
+                491
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.298125,
+                0.7625,
+                0.306875
+              ]
+            },
+            {
+              "text": "ngữ, tin học, tư vấn du học, năng khiếu, kĩ năng sống, các cơ sở dạy thêm học",
+              "bbox": [
+                88,
+                457,
+                915,
+                471
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.285625,
+                0.7625,
+                0.294375
+              ]
+            },
+            {
+              "text": "thêm... nghỉ học và dừng tất cả các hoạt động tập trung học sinh, học viên từ 13 giờ 00",
+              "bbox": [
+                88,
+                437,
+                915,
+                451
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.273125,
+                0.7625,
+                0.281875
+              ]
+            },
+            {
+              "text": "ngày 26/7/2020 cho đến khi có thông báo tiếp theo.",
+              "bbox": [
+                88,
+                417,
+                747,
+                432
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.260625,
+                0.6225,
+                0.27
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.260625,
+            0.7625,
+            0.306875
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            502,
+            915,
+            540
+          ],
+          "lines": [
+            {
+              "text": "Các trường đại học ngoài công lập căn cứ tình hình thực tế và chỉ đạo của",
+              "bbox": [
+                88,
+                526,
+                915,
+                540
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.32875,
+                0.7625,
+                0.3375
+              ]
+            },
+            {
+              "text": "Bộ chủ quản để quyết định việc tập trung sinh viên, học viên.",
+              "bbox": [
+                88,
+                502,
+                856,
+                516
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.31375,
+                0.7133333333333334,
+                0.3225
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.31375,
+            0.7625,
+            0.3375
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            569,
+            915,
+            664
+          ],
+          "lines": [
+            {
+              "text": "b) Nhằm góp phần cùng thành phố chống dịch một cách triệt để, Sở Giáo",
+              "bbox": [
+                88,
+                649,
+                915,
+                664
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.405625,
+                0.7625,
+                0.415
+              ]
+            },
+            {
+              "text": "dục và Đào tạo đề nghị tổ dân phố, chính quyền địa phương và kêu gọi toàn thể",
+              "bbox": [
+                88,
+                629,
+                915,
+                644
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.393125,
+                0.7625,
+                0.4025
+              ]
+            },
+            {
+              "text": "nhân dân tăng cường giám sát, xử lý, thông tin đến Sở Giáo dục và Đào tạo, các",
+              "bbox": [
+                88,
+                609,
+                915,
+                624
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.380625,
+                0.7625,
+                0.39
+              ]
+            },
+            {
+              "text": "cơ quan chức năng những trường hợp vi phạm quy định trên để kịp thời phối",
+              "bbox": [
+                88,
+                589,
+                915,
+                604
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.368125,
+                0.7625,
+                0.3775
+              ]
+            },
+            {
+              "text": "hợp, xử lý.",
+              "bbox": [
+                88,
+                569,
+                269,
+                584
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.355625,
+                0.22416666666666665,
+                0.365
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.355625,
+            0.7625,
+            0.415
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            680,
+            851,
+            698
+          ],
+          "lines": [
+            {
+              "text": "2. Về thực hiện các biện pháp phòng, chống dịch COVID-19",
+              "bbox": [
+                88,
+                680,
+                851,
+                698
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.425,
+                0.7091666666666666,
+                0.43625
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.425,
+            0.7091666666666666,
+            0.43625
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            736,
+            915,
+            831
+          ],
+          "lines": [
+            {
+              "text": "Thủ trưởng các đơn vị, trường học có trách nhiệm quán triệt, triển khai thực",
+              "bbox": [
+                88,
+                816,
+                915,
+                831
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.51,
+                0.7625,
+                0.519375
+              ]
+            },
+            {
+              "text": "hiện nghiêm túc Chỉ thị số 19/CT-TTg ngày 24/4/2020 của Thủ tướng Chính phủ",
+              "bbox": [
+                88,
+                796,
+                915,
+                811
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.4975,
+                0.7625,
+                0.506875
+              ]
+            },
+            {
+              "text": "về tiếp tục thực hiện các biện pháp phòng, chống dịch trong tình hình mới; chỉ đạo",
+              "bbox": [
+                88,
+                776,
+                915,
+                791
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.485,
+                0.7625,
+                0.494375
+              ]
+            },
+            {
+              "text": "của Sở Giáo dục và Đào tạo tại Công văn số 1899/SGDĐT-CTTT ngày 24/7/2020",
+              "bbox": [
+                88,
+                756,
+                915,
+                771
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.4725,
+                0.7625,
+                0.481875
+              ]
+            },
+            {
+              "text": "về việc tăng cường thực hiện các giải pháp phòng, chống dịch COVID-19.",
+              "bbox": [
+                88,
+                736,
+                915,
+                751
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.46,
+                0.7625,
+                0.469375
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.46,
+            0.7625,
+            0.519375
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            847,
+            915,
+            866
+          ],
+          "lines": [
+            {
+              "text": "3. Đối với công tác tổ chức thi tốt nghiệp trung học phổ thông năm 2020",
+              "bbox": [
+                88,
+                847,
+                915,
+                866
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.529375,
+                0.7625,
+                0.54125
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.529375,
+            0.7625,
+            0.54125
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            878,
+            659,
+            893
+          ],
+          "lines": [
+            {
+              "text": "a) Trường các điểm thi có trách nhiệm",
+              "bbox": [
+                88,
+                878,
+                659,
+                893
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.54875,
+                0.5491666666666667,
+                0.558125
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.54875,
+            0.5491666666666667,
+            0.558125
+          ]
+        },
+        {
+          "type": "text",
+          "bbox": [
+            88,
+            866,
+            915,
+            1000
+          ],
+          "lines": [
+            {
+              "text": "- Tiếp tục quán triệt thực hiện nghiêm túc Mục 6, Công văn số",
+              "bbox": [
+                108,
+                986,
+                765,
+                1000
+              ],
+              "bbox_norm": [
+                0.09,
+                0.61625,
+                0.6375,
+                0.625
+              ]
+            },
+            {
+              "text": "1899/SGDĐT-CTTT.",
+              "bbox": [
+                88,
+                966,
+                331,
+                981
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.60375,
+                0.2758333333333333,
+                0.613125
+              ]
+            },
+            {
+              "text": "- Bố trí mỗi điểm thi ít nhất 02 phòng dự phòng; sắp xếp bàn ghế đảm bảo",
+              "bbox": [
+                108,
+                946,
+                915,
+                961
+              ],
+              "bbox_norm": [
+                0.09,
+                0.59125,
+                0.7625,
+                0.600625
+              ]
+            },
+            {
+              "text": "giãn cách giữa các bàn dành cho thí sinh.",
+              "bbox": [
+                88,
+                926,
+                616,
+                941
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.57875,
+                0.5133333333333333,
+                0.588125
+              ]
+            },
+            {
+              "text": "- Làm việc trực tiếp với Phó Trưởng điểm phụ trách cơ sở vật chất để",
+              "bbox": [
+                108,
+                906,
+                915,
+                921
+              ],
+              "bbox_norm": [
+                0.09,
+                0.56625,
+                0.7625,
+                0.575625
+              ]
+            },
+            {
+              "text": "kiểm tra, rà soát tất cả các điều kiện đảm bảo an toàn cho cán bộ coi thi, nhân",
+              "bbox": [
+                88,
+                886,
+                915,
+                901
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.55375,
+                0.7625,
+                0.563125
+              ]
+            },
+            {
+              "text": "viên phục vụ và thí sinh dự thi.",
+              "bbox": [
+                88,
+                866,
+                450,
+                881
+              ],
+              "bbox_norm": [
+                0.07333333333333333,
+                0.54125,
+                0.375,
+                0.550625
+              ]
+            }
+          ],
+          "bbox_norm": [
+            0.07333333333333333,
+            0.54125,
+            0.7625,
+            0.625
+          ]
+        }
+      ],
+      "full_text": "UBND THÀNH PHỐ ĐÀ NẴNG\nSỞ GIÁO DỤC VÀ ĐÀO TẠO\nSố: 1906 /SGDĐT-CTTTT\nV/v khẩn trương thực hiện các biện\npháp phòng, chống dịch COVID-19\nKính gửi:\n- Phòng giáo dục và đào tạo các quận, huyện;\n- Các trường, trung tâm trực thuộc Sở;\n- Các trường đại học ngoài công lập.\nCỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\nĐà Nẵng, ngày 26 tháng 7 năm 2020\nThực hiện chỉ đạo của UBND thành phố tại Công văn số 4869/UBND-\nSYT ngày 26/7/2020 về việc khẩn trương triển khai các biện pháp phòng, chống\ndịch COVID-19, Sở Giáo dục và Đào tạo yêu cầu thủ trưởng các đơn vị, trường\nhọc khẩn trương thực hiện những nội dung sau:\n1. Thời gian học sinh, học viên, sinh viên nghỉ học\na) Học sinh, học viên các cơ sở giáo dục mầm non, các trung tâm ngoại\nngữ, tin học, tư vấn du học, năng khiếu, kĩ năng sống, các cơ sở dạy thêm học\nthêm... nghỉ học và dừng tất cả các hoạt động tập trung học sinh, học viên từ 13 giờ 00\nngày 26/7/2020 cho đến khi có thông báo tiếp theo.\nCác trường đại học ngoài công lập căn cứ tình hình thực tế và chỉ đạo của\nBộ chủ quản để quyết định việc tập trung sinh viên, học viên.\nb) Nhằm góp phần cùng thành phố chống dịch một cách triệt để, Sở Giáo\ndục và Đào tạo đề nghị tổ dân phố, chính quyền địa phương và kêu gọi toàn thể\nnhân dân tăng cường giám sát, xử lý, thông tin đến Sở Giáo dục và Đào tạo, các\ncơ quan chức năng những trường hợp vi phạm quy định trên để kịp thời phối\nhợp, xử lý.\n2. Về thực hiện các biện pháp phòng, chống dịch COVID-19\nThủ trưởng các đơn vị, trường học có trách nhiệm quán triệt, triển khai thực\nhiện nghiêm túc Chỉ thị số 19/CT-TTg ngày 24/4/2020 của Thủ tướng Chính phủ\nvề tiếp tục thực hiện các biện pháp phòng, chống dịch trong tình hình mới; chỉ đạo\ncủa Sở Giáo dục và Đào tạo tại Công văn số 1899/SGDĐT-CTTT ngày 24/7/2020\nvề việc tăng cường thực hiện các giải pháp phòng, chống dịch COVID-19.\n3. Đối với công tác tổ chức thi tốt nghiệp trung học phổ thông năm 2020\na) Trường các điểm thi có trách nhiệm\n- Tiếp tục quán triệt thực hiện nghiêm túc Mục 6, Công văn số\n1899/SGDĐT-CTTT.\n- Bố trí mỗi điểm thi ít nhất 02 phòng dự phòng; sắp xếp bàn ghế đảm bảo\ngiãn cách giữa các bàn dành cho thí sinh.\n- Làm việc trực tiếp với Phó Trưởng điểm phụ trách cơ sở vật chất để\nkiểm tra, rà soát tất cả các điều kiện đảm bảo an toàn cho cán bộ coi thi, nhân\nviên phục vụ và thí sinh dự thi."
+    }
+  ],
+  "full_text": "UBND THÀNH PHỐ ĐÀ NẴNG\nSỞ GIÁO DỤC VÀ ĐÀO TẠO\nSố: 1906 /SGDĐT-CTTTT\nV/v khẩn trương thực hiện các biện\npháp phòng, chống dịch COVID-19\nKính gửi:\n- Phòng giáo dục và đào tạo các quận, huyện;\n- Các trường, trung tâm trực thuộc Sở;\n- Các trường đại học ngoài công lập.\nCỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\nĐà Nẵng, ngày 26 tháng 7 năm 2020\nThực hiện chỉ đạo của UBND thành phố tại Công văn số 4869/UBND-\nSYT ngày 26/7/2020 về việc khẩn trương triển khai các biện pháp phòng, chống\ndịch COVID-19, Sở Giáo dục và Đào tạo yêu cầu thủ trưởng các đơn vị, trường\nhọc khẩn trương thực hiện những nội dung sau:\n1. Thời gian học sinh, học viên, sinh viên nghỉ học\na) Học sinh, học viên các cơ sở giáo dục mầm non, các trung tâm ngoại\nngữ, tin học, tư vấn du học, năng khiếu, kĩ năng sống, các cơ sở dạy thêm học\nthêm... nghỉ học và dừng tất cả các hoạt động tập trung học sinh, học viên từ 13 giờ 00\nngày 26/7/2020 cho đến khi có thông báo tiếp theo.\nCác trường đại học ngoài công lập căn cứ tình hình thực tế và chỉ đạo của\nBộ chủ quản để quyết định việc tập trung sinh viên, học viên.\nb) Nhằm góp phần cùng thành phố chống dịch một cách triệt để, Sở Giáo\ndục và Đào tạo đề nghị tổ dân phố, chính quyền địa phương và kêu gọi toàn thể\nnhân dân tăng cường giám sát, xử lý, thông tin đến Sở Giáo dục và Đào tạo, các\ncơ quan chức năng những trường hợp vi phạm quy định trên để kịp thời phối\nhợp, xử lý.\n2. Về thực hiện các biện pháp phòng, chống dịch COVID-19\nThủ trưởng các đơn vị, trường học có trách nhiệm quán triệt, triển khai thực\nhiện nghiêm túc Chỉ thị số 19/CT-TTg ngày 24/4/2020 của Thủ tướng Chính phủ\nvề tiếp tục thực hiện các biện pháp phòng, chống dịch trong tình hình mới; chỉ đạo\ncủa Sở Giáo dục và Đào tạo tại Công văn số 1899/SGDĐT-CTTT ngày 24/7/2020\nvề việc tăng cường thực hiện các giải pháp phòng, chống dịch COVID-19.\n3. Đối với công tác tổ chức thi tốt nghiệp trung học phổ thông năm 2020\na) Trường các điểm thi có trách nhiệm\n- Tiếp tục quán triệt thực hiện nghiêm túc Mục 6, Công văn số\n1899/SGDĐT-CTTT.\n- Bố trí mỗi điểm thi ít nhất 02 phòng dự phòng; sắp xếp bàn ghế đảm bảo\ngiãn cách giữa các bàn dành cho thí sinh.\n- Làm việc trực tiếp với Phó Trưởng điểm phụ trách cơ sở vật chất để\nkiểm tra, rà soát tất cả các điều kiện đảm bảo an toàn cho cán bộ coi thi, nhân\nviên phục vụ và thí sinh dự thi."
+}

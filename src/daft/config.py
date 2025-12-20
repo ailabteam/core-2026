@@ -22,6 +22,18 @@ class Settings(BaseSettings):
     allowed_exts: List[str] = Field(
         default_factory=lambda: [".pdf", ".png", ".jpg", ".jpeg", ".tif", ".tiff"]
     )
+    # Word export settings
+    export_word: bool = Field(True, env="OCR_EXPORT_WORD")
+    word_font_size_base: int = Field(13, env="OCR_WORD_FONT_SIZE_BASE")
+    word_detect_columns: bool = Field(True, env="OCR_WORD_DETECT_COLUMNS")
+    word_merge_pages: bool = Field(True, env="OCR_WORD_MERGE_PAGES")
+    word_font_body: str = Field("Times New Roman", env="OCR_WORD_FONT_BODY")
+    word_font_heading: str = Field("Times New Roman", env="OCR_WORD_FONT_HEADING")
+    word_font_color: str = Field("000000", env="OCR_WORD_FONT_COLOR")
+    word_font_size_heading1: int = Field(14, env="OCR_WORD_FONT_SIZE_HEADING1")
+    word_font_size_heading2: int = Field(13, env="OCR_WORD_FONT_SIZE_HEADING2")
+    word_font_size_heading3: int = Field(13, env="OCR_WORD_FONT_SIZE_HEADING3")
+    word_font_size_org: int = Field(12, env="OCR_WORD_FONT_SIZE_ORG")
 
     # Print the environment variables
 

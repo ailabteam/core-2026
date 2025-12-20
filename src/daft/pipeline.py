@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import logging
 from pathlib import Path
-from typing import List
+from typing import Any, Dict, List
 
 from rich.console import Console
 from rich.table import Table
@@ -14,6 +14,8 @@ from src.ingest.pdf_utils import load_pages
 from src.ocr.gemini_client import GeminiClient
 from src.postprocess.layout import flatten_text, normalize_page
 from src.preprocess.image_ops import preprocess_pil
+from src.service.doc_semantic import analyze_document, render_debug_html
+from src.service.docx_exporter import export_to_docx
 from src.service.exporter import export_markdown
 from src.store.storage import save_json, save_page_image, save_text
 
@@ -73,6 +75,72 @@ def run_pipeline(input_path: Path, output_dir: Path) -> int:
     save_text(text_lines, text_path)
     export_markdown(processed_pages, output_dir / "layout.md")
 
+    # Export Word document if enabled
+    docx_path = output_dir / "document.docx"
+    if settings.export_word:
+        logger.info("Analyzing semantic structure for Word export...")
+        semantic_doc = analyze_document({"pages": processed_pages})
+
+        # Optional debug HTML
+        debug_path = output_dir / "debug.html"
+        render_debug_html(semantic_doc, debug_path)
+
+        # Adapt semantic blocks to exporter schema
+        def adapt_block(blk: Dict[str, Any]) -> Dict[str, Any]:
+            btype = blk.get("type", "paragraph")
+            if btype == "heading":
+                etype = "heading"
+            elif btype == "table":
+                etype = "table"
+            elif btype == "signature":
+                etype = "paragraph"  # Signature as paragraph with right alignment
+            else:
+                etype = "paragraph"
+            return {
+                "element_type": etype,
+                "heading_level": blk.get("heading_level"),
+                "alignment": blk.get("alignment", "left"),
+                "text": blk.get("text", ""),
+                "lines": blk.get("lines", []),
+                "bbox": blk.get("bbox", (0, 0, 0, 0)),  # Already in mm
+                "bold": blk.get("bold", False),  # Pass bold flag
+                "font_size_ratio": blk.get("font_size_ratio", 1.0),
+            }
+
+        adapted_pages = []
+        for page in semantic_doc.get("pages", []):
+            adapted_blocks = [adapt_block(b) for b in page.get("blocks", [])]
+            adapted_pages.append(
+                {
+                    "page": page.get("page", 0),
+                    "width": page.get("width", 1.0),
+                    "height": page.get("height", 1.0),
+                    "blocks": adapted_blocks,
+                }
+            )
+
+        logger.info("Exporting Word document...")
+        style_map = {
+            "body": settings.word_font_size_base,
+            "list": settings.word_font_size_base,
+            "heading1": settings.word_font_size_heading1,
+            "heading2": settings.word_font_size_heading2,
+            "heading3": settings.word_font_size_heading3,
+            "org": settings.word_font_size_org,
+        }
+        export_to_docx(
+            adapted_pages,
+            docx_path,
+            base_font_size=settings.word_font_size_base,
+            detect_columns=settings.word_detect_columns,
+            merge_pages=settings.word_merge_pages,
+            font_name_body=settings.word_font_body,
+            font_name_heading=settings.word_font_heading,
+            font_color=settings.word_font_color,
+            style_map=style_map,
+        )
+        console.print(f"[green]Word document exported:[/] {docx_path}")
+
     total_requests = client.get_request_count()
     total_pages = len(processed_pages)
     avg_requests_per_page = total_requests / total_pages if total_pages > 0 else 0
@@ -93,6 +161,9 @@ def run_pipeline(input_path: Path, output_dir: Path) -> int:
     table.add_column("Path")
     table.add_row("OCR JSON", str(ocr_json_path))
     table.add_row("Text", str(text_path))
+    table.add_row("Markdown", str(output_dir / "layout.md"))
+    if settings.export_word:
+        table.add_row("Word Document", str(docx_path))
     table.add_row("Page Images", str(page_images_dir))
     console.print(table)
     

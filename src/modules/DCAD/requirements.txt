@@ -1,0 +1,10 @@
+# Core dependencies for Document Image Enhancement Pipeline
+opencv-python>=4.9.0
+Pillow>=10.3.0
+pdf2image>=1.17.0
+numpy>=1.24.0
+scikit-image>=0.23.0
+scipy>=1.12.0
+
+# Optional: for visualization in examples
+matplotlib>=3.8.0

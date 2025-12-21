@@ -36,14 +36,11 @@ def main():
     model_name = "deepseek-ai/deepseek-vl2-tiny"
     image_path = "/kaggle/input/test-sign/1-5_Opt.jpg"  # Điều chỉnh đường dẫn theo cần thiết
     
-    # Kiểm tra file ảnh tồn tại
     if not os.path.exists(image_path):
         print(f"❌ Image not found: {image_path}")
         print("Please update the image_path variable")
         return
     
-    # Khởi tạo detector với multi-GPU và low_memory_mode
-    # Model sẽ chỉ được load một lần (singleton pattern)
     num_gpus = torch.cuda.device_count() if torch.cuda.is_available() else 0
     max_img_size = 1536 if num_gpus > 1 else 1024
     
@@ -55,7 +52,6 @@ def main():
         device_map="auto",
     )
     
-    # Nhận diện
     print(f"\n🔍 Detecting seals and signatures in: {image_path}\n")
     result, annotated_image = detector.detect(
         image_path=image_path,
@@ -63,7 +59,6 @@ def main():
         return_image=True
     )
     
-    # In kết quả
     print(f"\n📊 Detection Results:")
     print(f"  - Seals found: {len(result.seals)}")
     print(f"  - Signatures found: {len(result.signatures)}")
@@ -78,7 +73,6 @@ def main():
         for i, sig in enumerate(result.signatures, 1):
             print(f"    {i}. {sig}")
     
-    # Lưu kết quả
     base_name = os.path.basename(image_path)
     name_without_ext = os.path.splitext(base_name)[0]
     
